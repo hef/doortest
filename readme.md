@@ -1,8 +1,30 @@
-This is a test program zmq publisher written in go.
+These are test programs fir  zmq pub/sub written in go and python.
 
-We are having some problems getting the PS:One doors to publish on zmq sockets.
+The languages match Pumping staiton:One's layout of BBB publisher nodes, and
+python client programs
 
-This program simulates messages the doors would send in the language they use
-to send messages in.
 
-It will send 1000 messages, 1 per second, to the topic "door.test" on port 5556
+The Monitor
+===========
+
+monitor.py is a basic test script representing a python subscriber. use the 
+example like this:
+
+    python -m venv venv
+    venv/bin/pip install pyzmq
+    venv/bin/python monitor.py
+
+The monitor script can be used to test messages coming off of doors.
+
+
+The DoorTest
+============
+
+Doortest sends messages over zmq in go.
+
+    go get
+    go build
+    ./doortest
+
+The doortest will send a json message once per second so that client programs
+can be tested.

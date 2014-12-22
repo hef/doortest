@@ -3,8 +3,16 @@ package main
 import (
     "fmt"
     "time"
+    "encoding/json"
     zmq "github.com/pebbe/zmq4"
 )
+
+type Message struct {
+
+    EventType string
+    Event string
+    Time time.Time
+}
 
 func main() {
     publisher, err := zmq.NewSocket(zmq.PUB)
@@ -16,7 +24,8 @@ func main() {
     time.Sleep(time.Second)
     for i := 0; i < 1000; i++ {
         time.Sleep(time.Second)
-        _, err := publisher.SendMessage("door.test", fmt.Sprintf("%d-%s", i, "Open"))
+        message, _ := json.Marshal(Message{"door", "opened", time.Now()})
+        _, err := publisher.SendBytes(message, 0)
         if err != nil {
             fmt.Println(err)
         }
