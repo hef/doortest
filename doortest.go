@@ -7,7 +7,7 @@ import (
     zmq "github.com/pebbe/zmq4"
 )
 
-type Message struct {
+type EventMessage struct {
 
     EventType string
     Event string
@@ -24,7 +24,7 @@ func main() {
     time.Sleep(time.Second)
     for i := 0; i < 1000; i++ {
         time.Sleep(time.Second)
-        message, _ := json.Marshal(Message{"door", "opened", time.Now()})
+        message, _ := json.Marshal(EventMessage{"door", "opened", time.Now()})
         _, err := publisher.SendBytes(message, 0)
         if err != nil {
             fmt.Println(err)
