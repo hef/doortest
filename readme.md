@@ -1,4 +1,4 @@
-These are test programs fir  zmq pub/sub written in go and python.
+These are test programs for zmq pub/sub written in go and python.
 
 The languages match Pumping staiton:One's layout of BBB publisher nodes, and
 python client programs
@@ -7,7 +7,7 @@ python client programs
 The Monitor
 ===========
 
-monitor.py is a basic test script representing a python subscriber. use the 
+monitor.py is a basic test script representing a python subscriber. Use the 
 example like this:
 
     python -m venv venv
